@@ -1,0 +1,2 @@
+// mondodb command to delete al collection matching a field
+db.school.remove({name: "Holberton"})

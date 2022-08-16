@@ -1,0 +1,2 @@
+// mogodb command to create or use a db
+use my_db

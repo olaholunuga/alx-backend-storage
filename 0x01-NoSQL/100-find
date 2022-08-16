@@ -1,0 +1,2 @@
+// mongodb command to search documents by REGEX
+db.collection.find({name: /^Holberton/})
