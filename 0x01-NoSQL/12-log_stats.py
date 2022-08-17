@@ -7,12 +7,14 @@ if __name__ == "__main__":
     nginx_collect = client.logs.nginx
 
     n_logs = nginx_collect.count_documents()
-    n_get_logs = nginx_collect.count_documents({'methods': "GET"})
-    n_post_logs = nginx_collect.count_documents({'methods': "POST"})
-    n_put_logs = nginx_collect.count_documents({'methods': "PUT"})
-    n_patch_logs = nginx_collect.count_documents({'methods': "PATCH"})
-    n_delete_logs = nginx_collect.count_documents({'methods': "DELETE"})
-    n_status_logs = nginx_collect.count_documents({'methods': "GET", "path": "/status"})
+    n_get_logs = len(list(nginx_collection.find({'method': "GET"})))
+    n_post_logs = len(list(nginx_collection.find({'method': "POST"})))
+    n_put_logs = len(list(nginx_collection.find({'method': "PUT"})))
+    n_patch_logs = len(list(nginx_collection.find({'method': "PATCH"})))
+    n_delete_logs = len(list(nginx_collection.find({'method': "DELETE"})))
+    n_status_logs = len(list(
+        nginx_collection.find({'method': 'GET', 'path': '/status'})
+    ))
 
     print("{} logs".format(n_logs))
     print("methods:\n\tmethod GET: {}".format(n_get_logs))
